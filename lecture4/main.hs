@@ -74,3 +74,19 @@ firstElem el list =
 			| otherwise = srch ( num + 1 ) el ss
 	in
 		srch 0 el list
+
+-- set — функция, возвращающая список из всех атомов, 
+-- содержащихся в заданном списке. Каждый атом должен 
+-- присутствовать в результирующем списке в единственном числе.
+set' list =
+	let
+		chck lst
+			| null lst = lst
+			| notElem ( head lst ) ( tail lst ) = ( head lst ) : chck ( tail lst )
+			| otherwise = chck ( tail lst )
+	in
+		chck list
+
+-- freq — функция, возвращающая список пар (символ, частота). 
+-- Каждая пара определяет атом из заданного списка и частоту его вхождения в этот список.
+freq' 
