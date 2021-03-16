@@ -1,3 +1,5 @@
+import GHC.Float
+
 -- НОД
 mgcd x y =
 	let mygcd a b
@@ -89,4 +91,17 @@ set' list =
 
 -- freq — функция, возвращающая список пар (символ, частота). 
 -- Каждая пара определяет атом из заданного списка и частоту его вхождения в этот список.
-freq' 
+freq' list =
+	let
+		fres res lst
+			| null lst = res
+			| otherwise = fres (addfr (head lst) res) (tail lst)
+		addfr num lst
+			| null lst = [[num, 1]]
+			| num == head (head lst) = [ num, last (head lst) + 1 ] : (tail lst)
+			| otherwise = (head lst) : addfr num (tail lst)
+		normlz num res lst
+			| null lst = res
+			| otherwise = normlz num ( res ++ [( head (head lst), (int2Float(last (head lst)) / int2Float(num) ) )] ) ( tail lst )
+	in
+		normlz (length list) [] (fres [] list)
