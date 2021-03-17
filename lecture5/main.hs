@@ -15,7 +15,18 @@ fib2 n =
 		last $ take n $ iterate fibh [1]
 
 -- Список треугольных чисел
-
+triNums n =
+	let
+		triNum num res
+			| num <= 0 = res
+			| otherwise = triNum (num - 1) (res + num)
+		trin' num = triNum num 0
+	in
+		map trin' ( take n $ iterate (+1) 1 )
 
 -- Список пирамидальных чисел
-
+pyrNums n =
+	let
+		pyrNum n = sum $ triNums n
+	in
+		map pyrNum ( take n $ iterate (+1) 1 )
