@@ -1,8 +1,14 @@
---import
+import Data.List
 
 -- permute - генерация всех перестановок списка
 permute' :: [a] -> [[a]]
-
+permute' [] = [[]]
+permute' list = 
+	let
+		permutate target sample = map ( target !! ) sample
+		
+	in
+		map (permutate list) 
 
 -- concat - объединяет списочную структуру в единый список
 -- не совсем понятно, как и для чего здесь привязать мемоизацию
