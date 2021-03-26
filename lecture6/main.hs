@@ -9,6 +9,7 @@ permute' list =
 		
 	in
 		map (permutate list) 
+-- ниасилил
 
 -- concat - объединяет списочную структуру в единый список
 -- не совсем понятно, как и для чего здесь привязать мемоизацию
@@ -20,4 +21,3 @@ concat' list =
 			| otherwise = conc ( res ++ ( head lst ) ) ( tail lst )
 	in
 		conc [] list
-
