@@ -24,6 +24,8 @@ instance (Num a) => Num (Complex a) where
   abs (Complex a b ) = Complex (abs a) (abs b)
   fromInteger n = Complex (fromInteger n) (fromInteger 0)
 
+-- abs&signum from Int or Integer - how&why?
+
 -- 3) Определить экземпляры классов типов Functor и Applicative для типа данных Fun.
 
 -- 3
