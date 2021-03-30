@@ -6,3 +6,7 @@ module Fun where
   
   instance Functor (Fun a) where
     fmap f (Fun b) = Fun (f . b)
+  
+  instance Applicative (Fun a) where
+    pure a = Fun (\x -> a)
+	  (<*>) (Fun f) a = Fun (\x -> f x ((getFun a) x))
